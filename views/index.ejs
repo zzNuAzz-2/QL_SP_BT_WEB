@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="main">
+    <form class="form" action="/" method="get">
+      <div class="form__select">
+        Loại sản phẩm
+        <select name="product_type" id="select">
+          <option value="all">All</option>
+          <% product_type.forEach(function(type){ %>
+            <option 
+              <% if (type.selected) { %> 
+                selected 
+              <% } %>
+              value="<%= type.ma_loai %>"
+            >
+              <%= type.ten_loai %>
+            </option>
+          <% }); %>
+        </select>
+      </div>
+      <div class="form__submit">
+        <button type="submit">Tìm</button>
+      </div>
+    </form>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>STT</th>
+          <th>Mã sản phẩm</th>
+          <th>Tên sản phẩm</th>
+          <th>Đơn giá</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% products.forEach(function(product, id){ %>
+            <tr>
+              <td><%= id %></td>
+              <td><%= product.ma_san_pham %></td>
+              <td><%= product.ten_san_pham %></td>
+              <td><%= product.don_gia %></td>
+            </tr>
+          <% }); %>
+      </tbody>
+    </table>
+  </div>
+</body>
+
+</html>
